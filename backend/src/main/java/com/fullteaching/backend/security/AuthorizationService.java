@@ -1,6 +1,7 @@
 package com.fullteaching.backend.security;
 
 import java.util.Collection;
+import java.util.Objects;
 
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -36,7 +37,7 @@ public class AuthorizationService {
 			log.error("Element not found");
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		if(!this.user.getLoggedUser().equals(u)){
+		if(Objects.isNull(this.user.getLoggedUser()) || !this.user.getLoggedUser().equals(u)){
 			// The user does not match the logged one
 			log.warn("The user is not authorized");
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED); 

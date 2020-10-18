@@ -67,7 +67,7 @@ public class CourseService implements FTService<Course, Long> {
         Course course = this.repo.findById(id).orElse(null);
 
         // must check if the files of this course have date restriction
-        if (Objects.nonNull(course) && !this.userComponent.getLoggedUser().isRole(Role.TEACHER)) {
+        if (Objects.nonNull(course) && Objects.nonNull(this.userComponent.getLoggedUser()) && !this.userComponent.getLoggedUser().isRole(Role.TEACHER)) {
             CourseDetails courseDetails = course.getCourseDetails();
             if (Objects.nonNull(courseDetails)) {
 
