@@ -63,7 +63,7 @@ export class AuthenticationService {
         this.token = null;
         localStorage.removeItem('login');
         localStorage.removeItem('rol');
-        this.router.navigate(['']);
+        this.router.navigate(['presentation']);
         this.modalService.newLogoutModal();
         return response;
       },

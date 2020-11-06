@@ -13,15 +13,16 @@ export class InterceptorService implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    console.log(this.cookieService.get('FULLTEACHING_SESSION'))
-
     if (!environment.production) {
       req = req.clone({
         url: environment.API_URL + req.url,
         withCredentials: true
       });
     }
+
+    req = req.clone({
+      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
+    });
 
     return next.handle(req);
   }

@@ -39,12 +39,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic();
         http.csrf().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/", "/api-logIn")
-                .permitAll();
+                .antMatchers(
+                        "/api-chat/**",
+                        "/api-comments/**",
+                        "/api-courses/**",
+                        "/api-entries/**",
+                        "/api-load-files/**",
+                        "/api-files/**",
+                        "/api-file-reader/**",
+                        "/api-forum/**",
+                        "/api-notifications/**",
+                        "/api-sessions/**",
+                        "/api-users/**",
+                        "/api-video-sessions/**",
+                        "/streaming/video/**")
+                .authenticated()
+                .anyRequest()
+                .permitAll()
+                .and()
+                .httpBasic();
     }
 
     @Override

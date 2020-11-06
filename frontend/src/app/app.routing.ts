@@ -13,7 +13,10 @@ import {PdfOnlineViewerComponent} from './components/pdf-online-viewer/pdf-onlin
 
 const appRoutes: Routes = [
   {
-    path: '',
+    path: '', redirectTo: '/presentation', pathMatch: 'full'
+  },
+  {
+    path: 'presentation',
     component: PresentationComponent,
   },
 
