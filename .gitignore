@@ -15,3 +15,5 @@
 gradlew.bat
 gradlew
 /frontend/node_modules
+/frontend/.gradle
+/frontend/package-lock.json
