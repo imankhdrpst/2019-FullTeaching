@@ -11,7 +11,7 @@ services:
       - POSTGRES_USER=postgres
 
   full-teaching-openvidu-server-kms:
-    image: openvidu/openvidu-server-kms:latest
+    image: openvidu/openvidu-server:master
     ports:
       - 4443:4443
     environment:
@@ -21,7 +21,7 @@ services:
       - openvidu.publicurl=docker
 
   full-teaching:
-    image: full-teaching:1.0
+    image: codeurjc/full-teaching
     links:
       - full-teaching-postgresql
       - full-teaching-openvidu-server-kms
