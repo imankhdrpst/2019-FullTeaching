@@ -11,7 +11,7 @@ node {
 }
 
 // 3
-jar.dependsOn 'npm_run_build'
+//jar.dependsOn 'npm_run_build'
 
 // 4
 jar {
